@@ -26,6 +26,7 @@ public class MainActivity extends ActionBarActivity {
         List<String> lista = new ArrayList<String>();
         lista.add("Hola");
         ListAdapter listAdapter = new ArrayAdapter<String>(this, R.layout.list_item, lista);
+        list01.setAdapter(listAdapter);
     }
 
 
