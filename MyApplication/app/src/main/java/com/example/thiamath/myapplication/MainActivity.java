@@ -25,8 +25,9 @@ public class MainActivity extends ActionBarActivity {
         ListView list01 = (ListView)findViewById(R.id.list01);
         List<String> lista = new ArrayList<String>();
         lista.add("Hola");
-        ListAdapter listAdapter = new ArrayAdapter<String>(this, R.layout.list_item, lista);
+        ListAdapter listAdapter = new ArrayAdapter<String>(this, R.layout.list_item, (String[])lista.toArray());
         list01.setAdapter(listAdapter);
+        list01.setTextFilterEnabled(true);
     }
 
 
