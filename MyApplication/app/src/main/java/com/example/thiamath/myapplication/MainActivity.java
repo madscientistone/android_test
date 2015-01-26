@@ -17,16 +17,17 @@ import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
 
+    private List<String> lista = new ArrayList<String>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         ListView list01 = (ListView)findViewById(R.id.list01);
-        List<String> lista = new ArrayList<String>();
         lista.add("Hola");
-        ListAdapter listAdapter = new ArrayAdapter<String>(this, R.layout.list_item, (String[])lista.toArray());
-        list01.setAdapter(listAdapter);
+        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.list_item, lista);
+        list01.setAdapter(adapter);
         list01.setTextFilterEnabled(true);
     }
 
@@ -51,5 +52,12 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onButtonClick(View view){
+        lista.add("juas");
+
+        ListView list01 = (ListView)findViewById(R.id.list01);
+        ((ArrayAdapter)list01.getAdapter()).notifyDataSetChanged();
     }
 }
