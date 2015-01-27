@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -24,11 +25,29 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initComponents();
+        initListeners();
+    }
+
+    private void initComponents() {
         ListView list01 = (ListView)findViewById(R.id.list01);
         lista.add("Hola");
         ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.list_item, lista);
         list01.setAdapter(adapter);
         list01.setTextFilterEnabled(true);
+    }
+
+    private void initListeners() {
+        Button addButton = (Button) findViewById(R.id.button);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lista.add("juas");
+
+                ListView list01 = (ListView)findViewById(R.id.list01);
+                ((ArrayAdapter)list01.getAdapter()).notifyDataSetChanged();
+            }
+        });
     }
 
 
@@ -55,9 +74,5 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void onButtonClick(View view){
-        lista.add("juas");
-
-        ListView list01 = (ListView)findViewById(R.id.list01);
-        ((ArrayAdapter)list01.getAdapter()).notifyDataSetChanged();
     }
 }
