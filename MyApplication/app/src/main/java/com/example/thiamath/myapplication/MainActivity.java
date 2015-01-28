@@ -32,7 +32,7 @@ public class MainActivity extends ActionBarActivity {
     private void initComponents() {
         ListView list01 = (ListView)findViewById(R.id.list01);
         lista.add("Hola");
-        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.list_item, lista);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.list_item, lista);
         list01.setAdapter(adapter);
         list01.setTextFilterEnabled(true);
     }
@@ -73,6 +73,4 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onButtonClick(View view){
-    }
 }
