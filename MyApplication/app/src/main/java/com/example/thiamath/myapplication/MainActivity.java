@@ -1,5 +1,6 @@
 package com.example.thiamath.myapplication;
 
+import android.content.Intent;
 import android.database.DataSetObserver;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -18,7 +19,7 @@ import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
 
-    private List<String> lista = new ArrayList<String>();
+    private List<String> lista = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,13 @@ public class MainActivity extends ActionBarActivity {
 
                 ListView list01 = (ListView)findViewById(R.id.list01);
                 ((ArrayAdapter)list01.getAdapter()).notifyDataSetChanged();
+            }
+        });
+        ((Button) findViewById(R.id.button2)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), FullscreenActivity.class);
+                startActivity(intent);
             }
         });
     }

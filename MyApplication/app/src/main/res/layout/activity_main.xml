@@ -13,18 +13,28 @@
 	<ListView
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content"
-        android:id="@+id/list01" />
+        android:id="@+id/list01"
+        android:layout_above="@+id/button" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="addjuas"
         android:id="@+id/button"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="49dp"
         android:layout_marginStart="49dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="goFull"
+        android:id="@+id/button2"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/button"
+        android:layout_toEndOf="@+id/button" />
 
 </RelativeLayout>
 
