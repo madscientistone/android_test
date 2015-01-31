@@ -11,6 +11,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
+import android.view.Window;
+import android.view.WindowManager;
 
 
 /**
@@ -41,7 +43,7 @@ public class FullscreenActivity extends Activity {
     /**
      * The flags to pass to {@link SystemUiHider#getInstance}.
      */
-    private static final int HIDER_FLAGS = SystemUiHider.FLAG_HIDE_NAVIGATION;
+    private static final int HIDER_FLAGS = 0;//SystemUiHider.FLAG_HIDE_NAVIGATION;
 
     /**
      * The instance of the {@link SystemUiHider} for this activity.
@@ -51,6 +53,11 @@ public class FullscreenActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);   //new
+        getActionBar().hide();                                   //new
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
 
         setContentView(R.layout.activity_fullscreen);
         setupActionBar();
@@ -92,6 +99,10 @@ public class FullscreenActivity extends Activity {
                             // controls.
                             controlsView.setVisibility(visible ? View.VISIBLE : View.GONE);
                         }
+                        if (visible)
+                            getActionBar().show();
+                        else
+                            getActionBar().hide();
 
                         if (visible && AUTO_HIDE) {
                             // Schedule a hide().
@@ -99,6 +110,7 @@ public class FullscreenActivity extends Activity {
                         }
                     }
                 });
+
 
         // Set up the user interaction to manually show or hide the system UI.
         contentView.setOnClickListener(new View.OnClickListener() {
